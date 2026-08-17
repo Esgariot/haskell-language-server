@@ -656,8 +656,7 @@ common hlint
   -- Hlint isn't compatible with GHC 9.10, and crashes in subtle ways.
   -- See https://github.com/haskell/haskell-language-server/issues/4674
   -- for its wake of destruction.
-  -- hlint depends on ghc-lib-parser which doesn't support GHC 9.14
-  if flag(hlint) && !impl(ghc ==9.10.*) && !impl(ghc >= 9.14)
+  if flag(hlint) && !impl(ghc ==9.10.*)
     build-depends: haskell-language-server:hls-hlint-plugin
     cpp-options: -Dhls_hlint
 
@@ -666,8 +665,7 @@ library hls-hlint-plugin
   -- Hlint isn't compatible with GHC 9.10, and crashes in subtle ways.
   -- See https://github.com/haskell/haskell-language-server/issues/4674
   -- for its wake of destruction.
-  -- hlint depends on ghc-lib-parser which doesn't support GHC 9.14
-  if !flag(hlint) || impl(ghc ==9.10.*) || impl(ghc >= 9.14)
+  if !flag(hlint) || impl(ghc ==9.10.*)
     buildable: False
   exposed-modules:  Ide.Plugin.Hlint
   hs-source-dirs:   plugins/hls-hlint-plugin/src
@@ -717,8 +715,7 @@ test-suite hls-hlint-plugin-tests
   -- Hlint isn't compatible with GHC 9.10, and crashes in subtle ways.
   -- See https://github.com/haskell/haskell-language-server/issues/4674
   -- for its wake of destruction.
-  -- hlint depends on ghc-lib-parser which doesn't support GHC 9.14
-  if !flag(hlint) || impl(ghc ==9.10.*) || impl(ghc >= 9.14)
+  if !flag(hlint) || impl(ghc ==9.10.*)
     buildable: False
   type:             exitcode-stdio-1.0
   hs-source-dirs:   plugins/hls-hlint-plugin/test
@@ -2022,9 +2019,9 @@ test-suite func-test
   if flag(eval)
     cpp-options: -Dhls_eval
 -- formatters
-  if flag(fourmolu) && (impl(ghc < 9.14) || flag(ignore-plugins-ghc-bounds))
+  if flag(fourmolu)
     cpp-options: -Dhls_fourmolu
-  if flag(ormolu) && (impl(ghc < 9.14) || flag(ignore-plugins-ghc-bounds))
+  if flag(ormolu)
     cpp-options: -Dhls_ormolu
 
 test-suite wrapper-test

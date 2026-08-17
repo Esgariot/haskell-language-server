@@ -92,3 +92,13 @@ if impl(ghc >= 9.14)
     time-compat:time,
     uuid-types:template-haskell,
     websockets:containers,
+
+source-repository-package
+  type: git
+  location: https://github.com/Esgariot/hlint.git
+  tag: ad705ce9e2094ee932d6faffc7e1b554711ba71b
+
+source-repository-package
+  type: git
+  location: https://github.com/Esgariot/apply-refact.git
+  tag: d5cc5a1189737a928cc659b6abe7e1385b4aa4a2
